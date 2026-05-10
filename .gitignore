@@ -1,0 +1,79 @@
+# ═══════════════════════════════════════════
+# Backend (Python / FastAPI)
+# ═══════════════════════════════════════════
+
+# Virtual environment
+backend/venv/
+venv/
+.venv/
+env/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Environment variables (SECRETS!)
+.env
+.env.*
+!.env.example
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Uploads (if stored locally)
+backend/uploads/
+
+# ═══════════════════════════════════════════
+# Frontend (Next.js)
+# ═══════════════════════════════════════════
+
+# Dependencies
+node_modules/
+frontend/node_modules/
+
+# Next.js build
+.next/
+frontend/.next/
+out/
+
+# Production build
+build/
+dist/
+
+# Package manager
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# Testing
+coverage/
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Misc
+*.pem
