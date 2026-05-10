@@ -26,6 +26,7 @@ def create_new_resource(
 @router.get("/")
 def get_all_resources(
     search: str = None,
+    type: str = None,
     tag: str = None,
     page: int = Query(default=1, ge=1),
     limit: int = Query(default=10, ge=1, le=50),
@@ -34,6 +35,7 @@ def get_all_resources(
     resources = get_resources(
         user_id=current_user["_id"],
         search=search,
+        resource_type=type,
         page=page,
         limit=limit,
         tag=tag

@@ -32,7 +32,7 @@ export default function DashboardPage() {
 
   const [type, setType] = useState("")
 
-  const { data, isLoading } = useResources(searchParam || undefined, type, tagParam, pageParam, limitParam)
+  const { data, isLoading } = useResources(searchParam || undefined, type || undefined, tagParam, pageParam, limitParam)
 
 
   if (isLoading) {
