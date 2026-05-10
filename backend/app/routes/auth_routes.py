@@ -34,7 +34,7 @@ def login(user:UserLogin,response:Response):
         
         token_str = result["token"]
         
-        response.set_cookie("access_token",token_str,httponly=True,secure=False,samesite="lax",max_age=3600)
+        response.set_cookie("access_token",token_str,httponly=True,secure=True,samesite="none",max_age=3600)
         return {
             "message": "Login successful",
         }
