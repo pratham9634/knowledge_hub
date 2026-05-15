@@ -11,6 +11,9 @@ from "lucide-react"
 import { useCurrentUser }
 from "@/hooks/use-current-user"
 
+import { useUserStore }
+from "@/store/use-user-store"
+
 
 export default function ProtectedRoute({
   children
@@ -19,6 +22,8 @@ export default function ProtectedRoute({
 }) {
 
   const router = useRouter()
+  const setUser = useUserStore((s) => s.setUser)
+  const clearUser = useUserStore((s) => s.clearUser)
 
   const {
     data,
@@ -26,15 +31,20 @@ export default function ProtectedRoute({
     isError
   } = useCurrentUser()
 
-
+  // Hydrate the Zustand store once the user data arrives
   useEffect(() => {
+    if (data) {
+      setUser(data)
+    }
+  }, [data, setUser])
 
+  // Clear user and redirect on auth error
+  useEffect(() => {
     if (isError) {
-
+      clearUser()
       router.push("/login")
     }
-
-  }, [isError, router])
+  }, [isError, router, clearUser])
 
 
   if (isLoading) {

@@ -17,11 +17,14 @@ import { useRouter, useSearchParams, usePathname } from "next/navigation"
 import { toast } from "sonner"
 import { useTags, useResources } from "@/hooks/use-resource"
 import { cn } from "@/lib/utils"
+import { useUserStore } from "@/store/use-user-store"
 
 
 const LIMIT_OPTIONS = [5, 10, 20, 50]
 
 export default function Sidebar() {
+
+  const clearUser = useUserStore((s) => s.clearUser)
 
   const router = useRouter()
   const pathname = usePathname()
@@ -88,6 +91,7 @@ export default function Sidebar() {
   const handleLogout = async () => {
     try {
       await logoutUser()
+      clearUser()
       toast.success("Logged out successfully")
       router.push("/login")
     } catch {
