@@ -45,11 +45,6 @@ export default function Sidebar() {
   const total = resourceData?.total ?? 0
   const totalPages = Math.max(1, Math.ceil(total / currentLimit))
 
-  // Keep local state in sync if URL changes externally
-  useEffect(() => {
-    setSearchValue(currentSearch)
-  }, [currentSearch])
-
   // Push search param to URL with debounce
   useEffect(() => {
     const timer = setTimeout(() => {
